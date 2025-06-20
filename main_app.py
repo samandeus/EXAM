@@ -4,12 +4,11 @@ from builder_presentation import show_builder_presentation
 
 st.set_page_config(page_title="Паттерны проектирования", layout="wide")
 
-# Создаем навигацию
-st.sidebar.title("Навигация")
-page = st.sidebar.radio("Выберите презентацию:", 
-                        ["Prototype", "Builder"])
+# Меню выбора
+st.sidebar.title("🔍 Выбери паттерн")
+choice = st.sidebar.radio("", ["Prototype", "Builder"])
 
-if page == "Prototype":
+if choice == "Prototype":
     show_prototype_presentation()
-elif page == "Builder":
+else:
     show_builder_presentation()
