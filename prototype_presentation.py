@@ -1,51 +1,53 @@
 import streamlit as st
 
 def show_prototype_presentation():
-    st.title("Паттерн Prototype (Прототип)")
+    st.title("🎯 Паттерн Prototype (Прототип)")
     
-    with st.expander("Описание"):
-        st.write("""
-        **Порождающий паттерн проектирования**, который позволяет копировать объекты, 
-        не вдаваясь в подробности их реализации.
-        """)
-        
-        st.write("**Когда использовать?**")
-        st.write("- Когда код не должен зависеть от классов копируемых объектов")
-        st.write("- Когда нужно избежать построения иерархий классов фабрик")
+    # Слайд 1
+    st.header("1. Что это?")
+    st.markdown("""
+    **Prototype** — это порождающий паттерн, который:
+    - Позволяет копировать объекты **без привязки к их классам**
+    - Упрощает создание сложных объектов
+    - Работает через метод `clone()`
+    """)
+    st.image("https://refactoring.guru/images/patterns/diagrams/prototype/structure.png", width=500)
     
-    with st.expander("Структура паттерна"):
-        st.image("https://refactoring.guru/images/patterns/diagrams/prototype/structure.png", 
-                caption="Структура паттерна Prototype")
+    # Разделитель
+    st.markdown("---")
     
-    with st.expander("Пример реализации"):
-        st.code("""
-        import copy
-        
-        class Prototype:
-            def clone(self):
-                return copy.deepcopy(self)
-        
-        class Car(Prototype):
-            def __init__(self, model, color):
-                self.model = model
-                self.color = color
-            
-            def __str__(self):
-                return f"{self.color} {self.model}"
-        """)
+    # Слайд 2
+    st.header("2. Пример кода")
+    st.code("""
+    import copy
+
+    class Prototype:
+        def clone(self):
+            return copy.deepcopy(self)
+
+    class Car(Prototype):
+        def __init__(self, model, color):
+            self.model = model
+            self.color = color
+    """, language='python')
     
-    with st.expander("Использование"):
-        st.code("""
-        # Создаем оригинальный объект
-        original_car = Car("Tesla Model S", "red")
-        
-        # Клонируем объект
-        cloned_car = original_car.clone()
-        cloned_car.color = "blue"
-        
-        print(original_car)  # red Tesla Model S
-        print(cloned_car)    # blue Tesla Model S
-        """)
+    # Разделитель
+    st.markdown("---")
+    
+    # Слайд 3
+    st.header("3. Как использовать?")
+    st.code("""
+    # Создаем оригинал
+    tesla = Car("Model S", "red")
+    
+    # Клонируем и меняем
+    cloned_tesla = tesla.clone()
+    cloned_tesla.color = "blue"
+    
+    print(tesla.color)        # red
+    print(cloned_tesla.color) # blue
+    """)
+    st.success("✅ Клон независим от оригинала!")
 
 if __name__ == "__main__":
     show_prototype_presentation()
