@@ -1,5 +1,2 @@
 streamlit
-streamlit-reveal-slides
-git add requirements.txt
-git commit -m "Add requirements file"
-git push
+git+https://github.com/bouzidanas/streamlit-reveal-slides.git
