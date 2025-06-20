@@ -1,2 +1,1 @@
 streamlit
-git+https://github.com/bouzidanas/streamlit-reveal-slides.git
